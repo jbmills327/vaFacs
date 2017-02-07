@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+    <link rel="stylesheet" href="../css/normalize.css">
+
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <!-- bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VA Facilities</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as main">
+    <!-- <h1>{{ main.greeting }}</h1> -->
+    <div class="navBar">
+        <h1>VA Medical Facilities</h1>
+        <form class="searchForm">
+            <h4>Search: </h4><input class="form-control searchBox" type="text" placeholder="Search" ng-model="main.search">
+        </form>
+    </div>
+    <div class="makeItLegible">
+
+    </div>
+
+    <div class="listContainer">
+
+        <ul dir-paginate="items in main.newArray  | filter: main.search | itemsPerPage: 50">
+            <li>
+                <h3>Name:</h3> {{ items.name }}
+
+            </li>
+
+            <li>
+                <h3>Address:</h3> {{ items.address }}
+            </li>
+
+            <li>
+                <h3>City:</h3> {{ items.city }}
+            </li>
+
+            <li>
+                <h3> Zip Code:</h3> {{ items.postal_code }}
+            </li>
+
+            <li>
+                <h3> State:</h3> {{ items.state }}
+            </li>
+
+            <li>
+                <h3> Phone:</h3> {{ items.phone }}
+            </li>
+
+            <li>
+                <h3>Division: </h3>{{ items.division}}
+            </li>
+
+            <li>
+                <h3> Website:</h3>
+                <a style="color: #5b9aff" href="{{ items.url }}" target="_blank">{{ items.url }}</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <footer>
+        <div class="invControlsWrapper">
+            <dir-pagination-controls class="invControls" max-size="5" direction-links="true" boundary-links="true" auto-hide="false" ng-click="main.backToTop()"></dir-pagination-controls>
+        </div>
+
+    </footer>
+
+
+
+    <script type="text/javascript" src="../js/dirPagination.js"></script>
+    <script type="text/javascript" src="../js/module.js"></script>
+    <!-- <script type="text/javascript" src="../js/factory.js"></script> -->
+    <script type="text/javascript" src="../js/myScripts.js"></script>
+</body>
+
+</html>
